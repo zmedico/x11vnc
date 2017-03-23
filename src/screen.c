@@ -3685,6 +3685,12 @@ void initialize_screen(int *argc, char **argv, XImage *fb) {
 		screen->port = lport;
 	} else if (! got_rfbport) {
 		screen->autoPort = TRUE;
+		if (noipv4) {
+		    screen->port = 0;
+		}
+		if (noipv6) {
+		    screen->ipv6port = 0;
+		}
 	} else if (got_rfbport && got_rfbport_val == 0) {
 		screen->autoPort = FALSE;
 		screen->port = 0;
